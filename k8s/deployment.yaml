@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-sum
+  labels:
+    app: react-sum
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-sum
+  template:
+    metadata:
+      labels:
+        app: react-sum
+    spec:
+      containers:
+        - name: react-sum
+          image: maarousamad/k8s-react-sum:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"

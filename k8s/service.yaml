@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-sum-service
+  labels:
+    app: react-sum
+spec:
+  selector:
+    app: react-sum
+  ports:
+    - protocol: TCP
+      port: 80          # inside cluster
+      targetPort: 80    # containerPort
+      nodePort: 32080   # optional fixed NodePort (between 30000–32767)
+  type: NodePort
